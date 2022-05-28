@@ -18,7 +18,7 @@ import java.util.Optional;
 public class TeamController {
     private final MemberService memberService;
     private final TeamService teamService;
-
+    //프로젝트 새로만듬
     @PostMapping("/post")
     public ResponseEntity teamcreate(@RequestBody TeamForm request){
         log.info("title = {}, contents = {}, userId = {}",request.getTeam_name(),request.getContents(),request.getId());
