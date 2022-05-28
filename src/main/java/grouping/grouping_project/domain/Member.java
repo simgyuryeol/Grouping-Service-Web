@@ -13,9 +13,10 @@ import javax.persistence.*;
 @Table
 public class Member {
 
-    @Id @GeneratedValue
+    @GeneratedValue
     private Long seq; //사용자 시퀀스
 
+    @Id
     @Column(name="id")
     private String id; // 아이디
 
