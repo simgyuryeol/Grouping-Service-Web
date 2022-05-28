@@ -6,12 +6,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-//@Slf4j
+@Slf4j
 @RestController
 @RequestMapping("users")
 @RequiredArgsConstructor
@@ -21,7 +19,7 @@ public class MemberController {
 
     @PostMapping()
     public ResponseEntity singup(@RequestBody MemberForm request){
-        //log.info("userId = {}, password = {}, userName = {}", request.getName(), request.getId(),request.getAge());
+        log.info("userId = {}, password = {}, userName = {}", request.getName(), request.getId(),request.getAge());
         if(memberService.save(request).equals("Success")){
             return new ResponseEntity(HttpStatus.CREATED);
         }
