@@ -1,6 +1,7 @@
 package grouping.grouping_project.controller;
 
 import grouping.grouping_project.Dto.MemberForm;
+import grouping.grouping_project.Dto.MemberloginForm;
 import grouping.grouping_project.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,14 @@ public class MemberController {
         log.info("userId = {}, password = {}, userName = {}", request.getName(), request.getId(),request.getAge());
         if(memberService.save(request).equals("Success")){
             return new ResponseEntity(HttpStatus.CREATED);
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody MemberloginForm request){
+        if(memberService.login(request).equals("Success")){
+            return new ResponseEntity(HttpStatus.OK);
         }
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
