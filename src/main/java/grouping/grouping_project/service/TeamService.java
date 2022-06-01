@@ -7,6 +7,7 @@ import grouping.grouping_project.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class TeamService {
     private final TeamRepository teamRepository;
 
+    @Transactional
     public String TeamCreate(TeamForm request, Member member){
 
         teamRepository.save(Team.builder()
@@ -29,6 +31,7 @@ public class TeamService {
         return "Success";
     }
 
+    @Transactional
     public String TeamUpdate(Long teamid, TeamForm request){
         Optional<Team> team = teamRepository.findById(teamid);
         request.updateEntity(team.get());
@@ -36,6 +39,7 @@ public class TeamService {
         return "Success";
     }
 
+    @Transactional
     public List<TeamForm> TeamList() {
         List<Team> teams = teamRepository.findAll();
         List<TeamForm> teamFormList = new ArrayList<>();
@@ -51,6 +55,21 @@ public class TeamService {
         return teamFormList;
     }
 
+    @Transactional
+    public TeamForm teamContent(Long teamId){
+        Optional<Team> team = teamRepository.findById(teamId);
+        Team t=team.get();
+
+        TeamForm teamForm = new TeamForm();
+        teamForm.setTeam_name(t.getTeam_name());
+        teamForm.setContents(t.getContents());
+        teamForm.setCreated_time(t.getCreated_time());
+        teamForm.setId(t.getId().getId());
+
+        return teamForm;
+    }
+
+    @Transactional
     public String teamDelete(Long teamId){
         Optional<Team> team = teamRepository.findById(teamId);
         teamRepository.delete(team.get());

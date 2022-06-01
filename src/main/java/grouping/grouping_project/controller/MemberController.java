@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("users")
+@RequestMapping()
 @RequiredArgsConstructor
 public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping()
+    //회원가입
+    @PostMapping("/users")
     public ResponseEntity singup(@RequestBody MemberForm request){
         log.info("userId = {}, password = {}, userName = {}", request.getName(), request.getId(),request.getAge());
         if(memberService.save(request).equals("Success")){
