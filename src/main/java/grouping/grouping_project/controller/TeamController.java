@@ -18,6 +18,7 @@ import java.util.Optional;
 public class TeamController {
     private final MemberService memberService;
     private final TeamService teamService;
+
     //팀 새로만듬
     @PostMapping("/post")
     public ResponseEntity teamCreat(@RequestBody TeamForm request){
@@ -30,11 +31,13 @@ public class TeamController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    // 팀 조회
+    // 팀 전체 조회
     @GetMapping("/post")
     public ResponseEntity teamList(){
         return ResponseEntity.ok().body(teamService.TeamList());
     }
+
+
 
     // 팀 내용 수정
     @PatchMapping("/{seq}")

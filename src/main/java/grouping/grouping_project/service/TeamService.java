@@ -1,8 +1,10 @@
 package grouping.grouping_project.service;
 
 import grouping.grouping_project.Dto.TeamForm;
+import grouping.grouping_project.domain.Comment;
 import grouping.grouping_project.domain.Member;
 import grouping.grouping_project.domain.Team;
+import grouping.grouping_project.repository.CommentRepository;
 import grouping.grouping_project.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,7 @@ import java.util.Optional;
 @Slf4j
 public class TeamService {
     private final TeamRepository teamRepository;
+    private final CommentRepository commentRepository;
 
     @Transactional
     public String TeamCreate(TeamForm request, Member member){
@@ -59,6 +62,12 @@ public class TeamService {
     public TeamForm teamContent(Long teamId){
         Optional<Team> team = teamRepository.findById(teamId);
         Team t=team.get();
+
+//        Optional<Comment> commentList = commentRepository.findById(teamId);
+//
+//        for (Comment c : commentList){
+//
+//        }
 
         TeamForm teamForm = new TeamForm();
         teamForm.setTeam_name(t.getTeam_name());

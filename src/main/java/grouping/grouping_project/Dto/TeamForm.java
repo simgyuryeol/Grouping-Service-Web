@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,6 +20,8 @@ public class TeamForm {
     private String team_name; //팀이름
     private String contents; //모집 내용
     private String created_time; //작성 일자
+
+    private List<String> content; //댓글
 
     public void updateEntity(Team team){
         team.setTeam_name(this.team_name);
