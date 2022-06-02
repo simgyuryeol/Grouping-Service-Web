@@ -11,8 +11,8 @@ import javax.persistence.ManyToOne;
 
 @Getter
 public class CommentForm {
-    private Member id;
-    private Team team;
+    private String id;
+    private Long team;
     private String content;
 
 }
