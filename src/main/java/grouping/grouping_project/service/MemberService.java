@@ -1,6 +1,7 @@
 package grouping.grouping_project.service;
 
 import grouping.grouping_project.Dto.MemberForm;
+import grouping.grouping_project.Dto.MemberUpdateForm;
 import grouping.grouping_project.Dto.MemberloginForm;
 import grouping.grouping_project.domain.Member;
 import grouping.grouping_project.domain.Team;
@@ -21,7 +22,6 @@ import java.util.Optional;
 public class MemberService {
 
     private final MemberRepository memberRepository; // final 안넣어서 오류남 Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
-
 
     //회원가입
     @Transactional
@@ -49,7 +49,6 @@ public class MemberService {
         return member;
     }
 
-
     //로그인
     public String login(MemberloginForm memberloginForm){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -59,6 +58,10 @@ public class MemberService {
             return "False";
         }
         return "Success";
+
+    }
+
+    public void update(MemberUpdateForm memberUpdateForm) {
 
     }
 }
