@@ -1,6 +1,7 @@
 package grouping.grouping_project.controller;
 
 import grouping.grouping_project.Dto.MemberForm;
+import grouping.grouping_project.Dto.MemberUpdateForm;
 import grouping.grouping_project.Dto.MemberloginForm;
 import grouping.grouping_project.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.annotation.RequestScope;
+
+import javax.validation.Valid;
 
 @Slf4j
 @RestController
@@ -28,6 +32,7 @@ public class MemberController {
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
+    //로그인
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody MemberloginForm request){
         if(memberService.login(request).equals("Success")){
@@ -35,5 +40,17 @@ public class MemberController {
         }
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
+
+    //회원탈퇴
+    @DeleteMapping("/usesrs")
+
+    //회원 정보 수정
+    @PutMapping("/users")
+    @ResponseStatus(HttpStatus.OK)
+    public void updatemember(@Valid @RequestBody MemberUpdateForm memberUpdateForm) throws Exception{
+        memberService.update(memberUpdateForm);
+
+    }
+
 
 }

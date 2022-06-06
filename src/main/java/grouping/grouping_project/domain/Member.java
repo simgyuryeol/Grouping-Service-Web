@@ -35,6 +35,8 @@ public class Member {
     @Column(name="img")
     private String img; //사진
 
+    private String role; //사용자 권한
+
     // 회원 탈퇴시 작성한 게시물, 댓글 모두 삭제
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Team> teamList = new ArrayList<>();

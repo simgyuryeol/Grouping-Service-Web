@@ -1,5 +1,6 @@
 package grouping.grouping_project.config;
 
+import grouping.grouping_project.service.LoginService;
 import grouping.grouping_project.service.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class Securityconfig extends WebSecurityConfigurerAdapter {
 
     private final MemberService memberService;
+    private LoginService loginService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -44,6 +46,11 @@ public class Securityconfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .anyRequest()
                 .permitAll();
+    }
+
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception{
+        auth.userDetailsService(loginService).passwordEncoder(passwordEncoder());
     }
 
 
