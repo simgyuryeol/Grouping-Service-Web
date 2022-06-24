@@ -16,15 +16,6 @@ Grouping은 팀원을 모집하거나 팀원을 직접 찾을 수 있으며, 서
 Grouping으로 멋진 프로젝트를 완성해 보세요! :thumbsup:
 
 
-## 조원
-### 백엔드
-- 심규렬 ([https://github.com/simgyuryeol](https://github.com/simgyuryeol))
-- 하승훈 ([https://github.com/Hoony1019](https://github.com/Hoony1019))
-
-### 프론트 엔드
-- 이용호 ([https://github.com/dldydgh123](https://github.com/dldydgh123))
-- 차준영 ([https://github.com/ChaJuneYoung](https://github.com/ChaJuneYoung))
-
 ## 기술 스택
 
 Back-End
